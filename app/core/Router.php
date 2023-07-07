@@ -30,7 +30,20 @@ class Router
 
     public function run()
     {
-        $this -> match();
+        if ($this->match()) ;
+        $path_controller = 'app\\controllers\\' . ucfirst($this->params['controller']) . 'Controller';
+        if (class_exists($path_controller)) {
+            $action = 'action' . ucfirst($this->params['action']);
+            if (method_exists($path_controller, $action)) {
+                $controller = new $path_controller;
+                $controller->$action();
+            } else {
+                echo 'Экш не найден: ' . $action;
+            }
+        } else {
+            echo 'Класс не найджен: ' . $path_controller;
+        }
     }
+}
 
 }
