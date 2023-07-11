@@ -9,4 +9,3 @@ require 'autoload.php';
 $route = new Router();
 $route -> run();
 
-?>
