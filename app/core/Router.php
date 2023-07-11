@@ -46,4 +46,5 @@ class Router
             echo 'Не найдено';
         }
     }
+
 }
