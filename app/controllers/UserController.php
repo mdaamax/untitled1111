@@ -12,4 +12,19 @@ class UserController extends initController
         var_dump($this->route);
     }
 
+
+    public function behaviors()
+    {
+        return[
+            'access' => [
+                'rules'=> [
+                    'actions' => ['login'],
+                    'roles' => ['quest'],
+                    'mathCallback' => function(){
+                        $this -> redirect('/user/profile');
+                    }
+                ]
+            ]
+        ];
+    }
 }

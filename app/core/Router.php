@@ -35,7 +35,10 @@ class Router
                 $action = 'action' . ucfirst($this->params['action']);
                 if (method_exists($path_controller, $action)) {
                     $controller = new $path_controller($this-> params);
-                    $controller->$action();
+                    $behaviors = $controller -> behaviors();
+                    if ($this ->checkBehaviors($behaviors)){
+                        $controller -> $action();
+                    }
                 } else {
                     echo 'Action не найден: ' . $action;
                     View::errorCode(404);
@@ -47,4 +50,27 @@ class Router
             View::errorCode(404);
         }
     }
+
+    private function checkBehaviors($behaviors)
+    {
+        if (empty($behaviors['access']['rules'])){
+            return true;
+        }
+        foreach ($behaviors['access']['rules'] as $rule){
+            if (in_array($this->params['action'],$rule['actions'])){
+                if (in_array(UserOperations::getRoleUser(), $rule['roles'])){
+                    return true;
+                } else {
+                    if (isset($rule['matchCallback'])){
+                        call_user_func($rule['matchCallback']);
+                    } else {
+                        View::errorCode(403);
+                    }
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 }

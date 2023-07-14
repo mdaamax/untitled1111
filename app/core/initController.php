@@ -23,4 +23,8 @@ class initController
         $this ->view->redirect($url);
     }
 
+    public function behaviors(){
+        return[];
+    }
+
 }

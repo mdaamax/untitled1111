@@ -1,8 +1,8 @@
 <?php
 return [
-    'provider' => 'mysql',
+    'provider' => 'pgsql',
     'hostname' => 'localhost',
-    'database' => 'frame',
-    'username' => 'root',
+    'database' => 'newpgsql',
+    'username' => 'postgres',
     'password' => ''
 ];
