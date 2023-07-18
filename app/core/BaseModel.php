@@ -14,7 +14,7 @@ abstract class BaseModel
         $config = require 'app/config/db.php';
         try {
             $this->db = new PDO(
-                $config['provider'] . ':host' . $config['hostname'] . ';dbname=' . $config ['database'],
+                $config['provider'] . ':host=' . $config['hostname'] . ';dbname=' . $config ['database'],
                 $config['username'],
                 $config['password']
             );
@@ -27,13 +27,13 @@ abstract class BaseModel
     protected function query($sql, $params = [])
     {
         $query = $this->db->prepare($sql);
-        if (empty($params)) {
+        if (!empty($params)) {
             foreach ($params as $key => $val) {
                 $query->bindValue(':' . $key, $val);
             }
-            $query->execute();
-            return $query;
         }
+        $query->execute();
+        return $query;
     }
 
 

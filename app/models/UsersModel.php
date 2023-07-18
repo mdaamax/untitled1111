@@ -8,7 +8,7 @@ class UsersModel extends BaseModel
         $password = password_hash($password,PASSWORD_DEFAULT);
 
         return $this-> insert(
-            "INSERT INTO users(username,login,password) VALUES (:username,:login,:password)",
+            "INSERT INTO users (username, login, password) VALUES (:username, :login, :password)",
             [
                 'username' => $username,
                 'login' => $login,
