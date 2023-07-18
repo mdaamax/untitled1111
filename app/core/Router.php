@@ -1,6 +1,8 @@
 <?php
 
 namespace app\core;
+use app\lib\UserOperations;
+
 class Router
 {
     protected $params = [];
@@ -19,9 +21,10 @@ class Router
                 return false;
             }
         } else {
-            $this->params = [
-                'controller' => 'main',
-                'action' => 'index'
+            $params = require  'app/config/params.php';
+            $this -> params = [
+                'controller' => $params ['defaultController'],
+                'action' => $params ['defaultAction']
             ];
         }
         return true;
