@@ -31,6 +31,10 @@ class NewsModels extends BaseModel
                 ]
             );
         }
+        return [
+            'result' => $result,
+            'error_message' => $error_message
+        ];
     }
 
     public function getListNews()

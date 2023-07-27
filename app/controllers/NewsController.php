@@ -40,7 +40,7 @@ class NewsController extends initController
         $this->render('list', [
             'sidebar' => UserOperations::getMenuLinks(),
             'news' => $news,
-            'role' => UserOperations::RoleAdmin,
+            'role' => UserOperations::getRoleUser(),
         ]);
     }
 
