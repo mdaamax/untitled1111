@@ -67,8 +67,8 @@ class NewsModels extends BaseModel
         }
         if (empty($error_message)){
             $result = $this -> update(
-                "Update news SET tittle = :title ,short_description = :short_description,
-                 description =: description where id = :id",
+                "Update news SET title = :title ,short_description = :short_description,
+                 description = :description where id = :id",
                 [
                     'title' => $news_data['title'],
                     'short_description' => $news_data['short_description'],
@@ -81,6 +81,22 @@ class NewsModels extends BaseModel
             'result' => $result,
             'error_message' => $error_message
         ];
+    }
+
+
+
+    public function getNewsById($news_id)
+    {
+        $result = null;
+
+        $news = $this -> select('select * from news where id = :id',[
+            'id' => $news_id
+        ]);
+
+        if (!empty($news[0])){
+            $result = $news[0];
+        }
+        return $result;
     }
 
 }
