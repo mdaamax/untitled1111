@@ -42,7 +42,7 @@ class UserController extends initController
                 'rules' => [
                     [
                         'actions' => ['login', 'registration'],
-                        'roles' => [UserOperations::RoleGuest, UserOperations::RoleAdmin],
+                        'roles' => [UserOperations::RoleGuest],
                         'mathCallback' => function () {
                             $this->redirect('/user/profile');
                         }
@@ -105,7 +105,7 @@ class UserController extends initController
             }
         }
         $this->render('login', [
-            'error_massage' => $error_message
+            'error_message' => $error_message
         ]);
     }
     public function actionLogout()
@@ -114,7 +114,7 @@ class UserController extends initController
             unset($_SESSION['user']);
         }
         $params = require 'app/config/params.php';
-        $this ->redirect('/'. $params['defaultController'. '/'. $params['defaultAction']]);
+        $this ->redirect('/'. $params['defaultController']. '/'. $params['defaultAction']);
     }
 
 

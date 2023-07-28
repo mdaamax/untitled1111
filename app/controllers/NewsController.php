@@ -14,14 +14,14 @@ class NewsController extends initController
             'access' => [
                 'rules' => [
                     [
-                        'action' => ['list'],
+                        'actions' => ['list'],
                         'roles' => [UserOperations::RoleUser, UserOperations::RoleAdmin],
                         'matchCallback' => function () {
                             $this->redirect('/user/login');
                         }
                     ],
                     [
-                        'action' => ['add', 'edit'],
+                        'actions' => ['add', 'edit'],
                         'roles' => [UserOperations::RoleAdmin],
                         'matchCallback' => function () {
                             $this->redirect('/news/list');

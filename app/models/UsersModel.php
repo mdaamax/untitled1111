@@ -28,7 +28,7 @@ class UsersModel extends BaseModel
             $error_message .="Введите ваш пароль<br>";
         }
         if (empty($error_message)){
-            $users = $this -> select('select * from where login = :login',[
+            $users = $this -> select('select * from users where login = :login',[
                 'login'=>$login
             ]);
 
@@ -38,7 +38,7 @@ class UsersModel extends BaseModel
                     $_SESSION['user']['id']=$users[0]['id'];
                     $_SESSION['user']['username']=$users[0]['username'];
                     $_SESSION['user']['login']=$users[0]['login'];
-                    $_SESSION['user']['is_admin']=$users[0]['is_admin']=='1';
+                    $_SESSION['user']['is_admin']=$users[0]['is_admin'];
 
 
                     $result = true;

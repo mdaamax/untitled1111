@@ -21,13 +21,13 @@ class NewsModels extends BaseModel
         }
         if (empty($error_message)) {
             $result = $this->insert(
-                'INSERT INTO news(title,short_description, description , date_create , description)
+                'INSERT INTO news(title,short_description, description , date_create , user_id)
                         values (:title,:short_description, :description ,NOW(),:user_id)',
                 [
                     'title' => $news_data['title'],
                     'short_description' => $news_data['short_description'],
                     'description' => $news_data['description'],
-                    'user_id' => $news_data['user']['id'],
+                    'user_id' => $_SESSION['user']['id'],
                 ]
             );
         }
