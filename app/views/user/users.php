@@ -1,5 +1,6 @@
 <?php
 /** @var array $sidebar - Меню */
+
 /** @var array $users - Список пользователей */
 
 use app\lib\UserOperations;
@@ -30,15 +31,16 @@ use app\lib\UserOperations;
                         </div>
                         <?php if (!empty($users)) : ?>
                             <div class="news-list">
-                                <?php foreach ($users as $user) :?>
+                                <?php foreach ($users as $user) : ?>
                                     <div class="news-item">
                                         <h3>
-                                            Имя: <?=$user['username']?>
-                                                (<a href="/user/edit/?user_id=<?=$user['id']?>">Редактировать</a>
-                                                <a href="/user/delete/?user_id=<?=$user['id']?>">Удалить</a>)
+                                            Имя: <?= $user['username'] ?>
+                                            (<a href="/user/edit/?user_id=<?= $user['id'] ?>">Редактировать</a>
+                                            <a href="/user/delete/?user_id=<?= $user['id'] ?>">Удалить</a>)
                                         </h3>
-                                        <div class="user-login">Имя: <?=$user['login']?></div>
-                                        <div class="user-is_admin">Являеться администратором: <?=($user['is_admin'] === '1') ? 'Да' : 'Нет'?></div>
+                                        <div class="user-login">Имя: <?= $user['login'] ?></div>
+                                        <div class="user-is_admin">Являеться
+                                            администратором: <?= ($user['is_admin'] == '1') ? 'Да' : 'Нет' ?></div>
                                     </div>
                                 <?php endforeach; ?>
                             </div>

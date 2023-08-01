@@ -99,4 +99,29 @@ class NewsModels extends BaseModel
         return $result;
     }
 
+
+    public function deleteById($news_id)
+    {
+        $result = false;
+        $error_message = '';
+
+        if (empty($news_id)){
+            $error_message .= "Отсутствует идентификатор записи!<br>";
+        }
+
+        if (empty($error_message)){
+            $result = $this ->delete("DELETE FROM news WHERE id = :id",
+            [
+                'id' => $news_id,
+            ]
+            );
+        }
+
+        return [
+            'result' => $result,
+            'error_message' => $error_message
+        ];
+    }
+
+
 }

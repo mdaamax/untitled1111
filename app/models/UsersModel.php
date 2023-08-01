@@ -103,4 +103,15 @@ class UsersModel extends BaseModel
             'error_message'=>$error_massage
         ];
     }
+
+    public function getListUsers()
+    {
+        $result = null;
+        $users = $this -> select('select id, username, login, is_admin from users');
+        if (!empty($users)){
+            $result = $users;
+        }
+        return $result;
+    }
+
 }

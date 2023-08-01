@@ -13,10 +13,6 @@ class UserController extends initController
         $this ->view ->title = 'Мой профиль';
         $error_message = '';
 
-        $this -> render('profile',[
-            'sidebar' => UserOperations::getMenuLinks(),
-            'error_message'=> $error_message
-        ]);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['btn_change_password_form'])) {
             $current_password = !empty($_POST['current_password']) ? $_POST['current_password'] : null;
@@ -33,6 +29,10 @@ class UserController extends initController
                 $error_message =$result_auth['error_message'];
             }
         }
+        $this -> render('profile',[
+            'sidebar' => UserOperations::getMenuLinks(),
+            'error_message'=> $error_message
+        ]);
     }
 
     public function behaviors()
@@ -45,6 +45,13 @@ class UserController extends initController
                         'roles' => [UserOperations::RoleGuest],
                         'mathCallback' => function () {
                             $this->redirect('/user/profile');
+                        }
+                    ],
+                    [
+                        'actions' => ['users'],
+                        'roles' => [UserOperations::RoleAdmin],
+                        'matchCallback' => function(){
+                            $this -> redirect('/user/profile');
                         }
                     ]
                 ]
@@ -115,6 +122,20 @@ class UserController extends initController
         }
         $params = require 'app/config/params.php';
         $this ->redirect('/'. $params['defaultController']. '/'. $params['defaultAction']);
+    }
+
+
+    public function actionUsers()
+    {
+        $this -> view ->title = 'Пользователи';
+
+        $user_model = new UsersModel();
+        $users = $user_model ->getListUsers();
+        $this -> render('users',[
+            'sidebar' => UserOperations::getMenuLinks(),
+            'users' => $users,
+            'role' => UserOperations::getRoleUser()
+        ]);
     }
 
 
