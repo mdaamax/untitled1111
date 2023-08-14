@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\initController;
 use app\lib\UserOperations;
+use app\models\NewsModels;
 use app\models\UsersModel;
 
 class UserController extends initController
@@ -87,7 +88,7 @@ class UserController extends initController
                 $userModel = new UsersModel();
                 $user_id = $userModel->addNewUser($username, $login, $password);
                 if (!empty($user_id)) {
-                    $this->redirect('/user/profile');
+                    $this->redirect('/user/login');
                 }
             }
         }
@@ -137,6 +138,68 @@ class UserController extends initController
             'role' => UserOperations::getRoleUser()
         ]);
     }
+
+
+
+    public function actionAdd()
+//    {
+//        $this->view->title = 'Добавление позьзователя';
+//        $error_message = '';
+//        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['btn_user_add_form'])) {
+//            $user_data = !empty($_POST['user']) ? $_POST['user'] : null;
+//            if (!empty($news_data)) {
+//                $userModel = new UsersModel();
+//                $result_add = $userModel->add();
+//                if ($result_add['result']) {
+//                    $this->redirect('/news/list');
+//                } else {
+//                    $error_message = $result_add['error_message'];
+//                }
+//            }
+//        }
+//        $this->render('add', [
+//            'sidebar' => UserOperations::getMenuLinks(),
+//            'error_message' => $error_message
+//        ]);
+//
+//    }
+    {
+        $this->view->title = 'Регистрация';
+        $error_message = '';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['btn_registration_form'])) {
+            $username = !empty($_POST['username']) ? $_POST['username'] : null;
+            $login = !empty($_POST['login']) ? $_POST['login'] : null;
+            $password = !empty($_POST['password']) ? $_POST['password'] : null;
+            $confirm_password = !empty($_POST['confirm_password']) ? $_POST['confirm_password'] : null;
+            if (empty($username)) {
+                $error_message .= "Введите ваше имя!<br>";
+            }
+            if (empty($login)) {
+                $error_message .= "Введите ваше логин!<br>";
+            }
+            if (empty($password)) {
+                $error_message .= "Введите ваше пароль!<br>";
+            }
+            if (empty($confirm_password)) {
+                $error_message .= "Введите повторный пароль!<br>";
+            }
+            if ($password != $confirm_password) {
+                $error_message .= "Пароли не совпадают!<br>";
+            }
+            if (empty($error_message)) {
+                $userModel = new UsersModel();
+                $user_id = $userModel->addUser($username, $login, $password);
+                if (!empty($user_id)) {
+                    $this->redirect('/user/users');
+                }
+            }
+        }
+        $this->render('add', [
+            'error_message' => $error_message
+        ]);
+    }
+
+
 
 
 }

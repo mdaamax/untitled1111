@@ -27,7 +27,7 @@ use app\lib\UserOperations;
                     <h2>Пользователи</h2>
                     <div class="news-block">
                         <div class="links_box text-end">
-                            <a href="/user/add">Добавить</a>
+                            <a href=/user/add>Добавить</a>
                         </div>
                         <?php if (!empty($users)) : ?>
                             <div class="news-list">

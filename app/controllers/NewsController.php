@@ -106,12 +106,10 @@ class NewsController extends initController
         $news_id = !empty($_GET['news_id']) ? $_GET['news_id'] : null;
         $news = null;
         $error_message = '';
-
-
         if (!empty($news_id)) {
             $news_model = new NewsModels();
             $news = $news_model->getNewsById($news_id);
-            if (empty($news)) {
+            if (!empty($news)) {
                 $result_delete = $news_model -> deleteById($news_id);
                 if ($result_delete['result']){
                     $this -> redirect('/news/list');

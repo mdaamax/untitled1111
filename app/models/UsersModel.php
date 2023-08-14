@@ -114,4 +114,34 @@ class UsersModel extends BaseModel
         return $result;
     }
 
+    public function addUser($username,$login,$password)
+    {
+        $password = password_hash($password,PASSWORD_DEFAULT);
+
+        return $this-> insert(
+            "INSERT INTO users (username, login, password) VALUES (:username, :login, :password)",
+            [
+                'username' => $username,
+                'login' => $login,
+                'password' => $password
+            ]
+        );
+    }
+
+//    public function add($username,$login,$password)
+//    {
+//        $error_message = '';
+//        if (empty($error_message)) {
+//            return $this-> insert(
+//                "INSERT INTO users (username, login, password) VALUES (:username, :login, :password)",
+//                [
+//                    'username' => $username,
+//                    'login' => $login,
+//                    'password' => $password
+//                ]
+//            );
+//        }
+//    }
+
+
 }
