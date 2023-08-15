@@ -35,7 +35,7 @@ class UserOperations
         ];
         $list[]= [
             'title' => 'Каталог',
-            'link' => '/main/product'
+            'link' => '/product/list'
         ];
         if ($role === self::RoleAdmin){
             $list[]= [

@@ -20,53 +20,53 @@
             </div>
             <div class="cabinet_content">
                 <dib class="page-content-inner">
-                    <h2>Редактирование новости</h2>
+                    <h2>Редактирование пользователя</h2>
                     <form method="post" name="news_add_form">
                         <div class="news_add_form">
-                            <div class="alert alert-danger <?= !empty($error_message) ? null : 'hidden' ?>">
-                                <?= !empty($error_message) ? $error_message : null ?>
-                            </div>
-                            <?php if (!empty($news)): ?>
+                            <!--                            <div class="alert alert-danger -->
+                            <?php //= !empty($error_message) ? null : 'hidden' ?><!--">-->
+                            <!--                                --><?php //= !empty($error_message) ? $error_message : null ?>
+                            <!--                            </div>-->
+                            <?php if (!empty($user)): ?>
                                 <div class="input_box">
-                                    <label for="field_title">Наименование</label>
+                                    <label for="field_title">Юзернайм</label>
                                     <input type="text"
-                                           name="news[title]"
+                                           name="user[username]"
                                            id="field_title"
                                            class="form-control"
                                            maxlength="120"
-                                           value="<?= !empty($_POST['news']['title']) ? $_POST['news']['title'] : (!empty($news['title']) ? $news['title'] : '') ?>"
+                                           value="<?= !empty($_POST['user']['username']) ? $_POST['user']['username'] : (!empty($user['username']) ? $user['username'] : '') ?>"
                                            placeholder="Введите наименование"
                                     >
                                 </div>
 
                                 <div class="input_box">
-                                    <label for="field_short_description">Краткое описание</label>
+                                    <label for="field_short_description">Логин</label>
                                     <input type="text"
-                                           name="news[short_description]"
+                                           name="user[login]"
                                            id="field_short_description"
                                            class="form-control"
                                            maxlength="120"
-                                           value="<?= !empty($_POST['news']['short_description'])
-                                               ? $_POST['news']['short_description']
-                                               : (!empty($news['short_description']) ? $news['short_description'] : '')
+                                           value="<?= !empty($_POST['user']['login'])
+                                               ? $_POST['user']['login']
+                                               : (!empty($user['login']) ? $user['login'] : '')
                                            ?>"
-                                           placeholder="Введите краткое описание"
+                                           placeholder="Введите логин"
+                                    >
+                                </div>
+                                <div class="input_box">
+                                    <label for="field_is_admin">Сделать админом</label>
+                                    <input type="checkbox"
+                                           name="user[is_admin]"
+                                           id="field_is_admin"
+                                           value= "1"
+                                        <?= !empty($_POST['user']['is_admin'])
+                                            ? 'checked'
+                                            : (!empty($user['is_admin']) ? 'checked' : '')
+                                        ?>
                                     >
                                 </div>
 
-                                <div class="input_box">
-                                    <label for="field_description">Описание</label>
-                                    <textarea
-                                            name="news[description]"
-                                            id="field_description"
-                                            cols="50"
-                                            rows="8"
-                                            placeholder="Введиет описание"
-                                    ><?= !empty($_POST['news']['description'])
-                                            ? $_POST['news']['description']
-                                            : (!empty($news['description']) ? $news['description'] : '')
-                                        ?></textarea>
-                                </div>
 
                                 <div class="button_box">
                                     <button type="submit"
