@@ -25,7 +25,7 @@ use app\lib\UserOperations;
             </div>
             <div class="cabinet_content">
                 <dib class="page-content-inner">
-                    <h2>Новости</h2>
+                    <h2>Корзина</h2>
                     <div class="news-block">
                         <div class="links_box text-end">
                             <a href="/news/add">Добавить</a>
@@ -35,11 +35,11 @@ use app\lib\UserOperations;
                                 <?php foreach ($card as $item) : ?>
                                     <div class="news-item">
                                         <h3>
-                                            <?= $item['title'] ?>
+                                            Название: <?= $item['title'] ?>
                                         </h3>
-                                        <div class="news-short_description">цена <?= $item['price'] ?></div>
-                                        <div class="news-description"><?= $item['description'] ?></div>
-                                        <div class="news-description"><?= $item['in_card'] ?></div>
+                                        <div class="news-short_description">Цена: <?= $item['price'] ?> ₽</div>
+                                        <div class="news-description">Описание: <?= $item['description'] ?></div>
+                                        <div class="news-description">Товаров в корзине: <?= $item['in_card'] ?></div>
                                     </div>
                                 <?php endforeach; ?>
 

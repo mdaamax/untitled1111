@@ -32,7 +32,7 @@ use app\lib\UserOperations;
                                 <?php foreach ($product as $item) : ?>
                                     <div class="news-item">
                                         <h3>
-                                            <?= $item['title'] ?>
+                                            Название: <?= $item['title'] ?>
 
                                             <?php if ($role === UserOperations::RoleAdmin) : ?>
                                                 (<a href="/product/edit?product_id=<?= $item['id'] ?>">редактировать</a>
@@ -41,8 +41,8 @@ use app\lib\UserOperations;
                                             <a href="/product/addcard?product_id=<?= $item['id'] ?>">добавить
                                                 корзину</a>
                                         </h3>
-                                        <div class="news-description"><?= $item['description'] ?></div>
-                                        <div class="news-description"><?= $item['price'] ?></div>
+                                        <div class="news-description">Описание: <?= $item['description'] ?></div>
+                                        <div class="news-description">Цена: <?= $item['price'] ?> ₽</div>
                                     </div>
                                 <?php endforeach; ?>
                             </div>
