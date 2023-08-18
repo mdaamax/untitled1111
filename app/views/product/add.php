@@ -29,7 +29,7 @@
                             <div class="input_box">
                                 <label for="field_title">Наименование</label>
                                 <input type="text"
-                                       name="title"
+                                       name="product[title]"
                                        id="field_title"
                                        class="form-control"
                                        maxlength="120"
@@ -41,7 +41,7 @@
                             <div class="input_box">
                                 <label for="field_short_description">цена</label>
                                 <input type="text"
-                                       name="price"
+                                       name="product[price]"
                                        id="field_short_description"
                                        class="form-control"
                                        maxlength="120"
@@ -52,11 +52,25 @@
                                        placeholder="цена"
                                 >
                             </div>
+                            <div class="input_box">
+                                <label for="field_short_description">колво</label>
+                                <input type="number"
+                                       name="product[count]"
+                                       id="field_short_description"
+                                       class="form-control"
+                                       maxlength="120"
+                                       value="<?= !empty($_POST['product']['count'])
+                                           ? $_POST['product']['count']
+                                           : (!empty($product['count']) ? $product['count'] : '')
+                                       ?>"
+                                       placeholder="колво"
+                                >
+                            </div>
 
                             <div class="input_box">
                                 <label for="field_description">Описание</label>
                                 <textarea
-                                    name="description"
+                                    name="product[description]"
                                     id="field_description"
                                     cols="50"
                                     rows="8"

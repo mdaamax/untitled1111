@@ -123,5 +123,16 @@ class NewsModels extends BaseModel
         ];
     }
 
+    public function getProductsByID($product_ids)
+    {
+        $result = null;
+
+        $product = $this->select("select * from product where id in ($product_ids)");
+        if (!empty($product)) {
+            $result = $product;
+        }
+        return $result;
+    }
+
 
 }

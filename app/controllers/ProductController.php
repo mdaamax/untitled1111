@@ -75,7 +75,7 @@ class ProductController extends initController
         $product = null;
         $error_message = '';
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['btn_news_edit_form'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['btn_product_edit_form'])) {
             $product_data = !empty($_POST['product']) ? $_POST['product'] : null;
 
             if (!empty($product_data)) {
@@ -142,7 +142,7 @@ class ProductController extends initController
         $product_id = !empty($_GET['product_id']) ? $_GET['product_id'] : null;
         $error_message = '';
         if (!empty($product_id)) {
-            $_SESSION["user"]['card'][]=$product_id;
+            $_SESSION["user"]['card'][] = $product_id;
             $this->redirect('/product/list');
         } else {
             $error_message = 'Отсутствует идентификатор записи!';
@@ -153,24 +153,35 @@ class ProductController extends initController
 
         ]);
     }
+
     public function actionCard()
     {
         $this->view->title = 'Корзина';
+        $product = null;
         $error_message = '';
         if (!empty($_SESSION['user']['card'])) {
-            $card=$_SESSION['user']['card'];
-            $productModel=new NewsModels();
-            $this->redirect('/product/list');
+            $card = array_count_values($_SESSION['user']['card']);
+
+
+            $productModel = new NewsModels();
+            $product = $productModel->getProductsByID(implode(',', array_keys($card)));
+            for ($i = 0; $i < count($product); $i++) {
+                $product[$i]['in_card'] = $card[$product[$i]['id']];
+            }
+
         } else {
             $error_message = 'Корзина пуста!';
         }
-        $this->render('delete', [
+        $this->render('card', [
             'sidebar' => UserOperations::getMenuLinks(),
-            'error_message' => $error_message
+            'error_message' => $error_message,
+            'card' => $product,
 
         ]);
     }
+    public function actionBuy()
+    {
 
-
+    }
 
 }

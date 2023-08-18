@@ -102,14 +102,18 @@ class ProductModel extends BaseModel
         if (empty($product_data['description'])) {
             $error_message .= "Введите описание<br>";
         }
+        if (empty($product_data['count'])) {
+            $error_message .= "kolvo<br>";
+        }
         if (empty($error_message)){
             $result = $this -> update(
-                "Update product SET title = :title ,price = :price,
+                "Update product SET title = :title ,price = :price, count = :count, 
                  description = :description where id = :id",
                 [
                     'title' => $product_data['title'],
                     'price' => $product_data['price'],
                     'description' => $product_data['description'],
+                    'count' => $product_data['count'],
                     'id' => $product_id,
                 ]
             );
