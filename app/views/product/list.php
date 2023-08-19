@@ -1,8 +1,10 @@
 <?php
 /** @var array $sidebar - Меню */
+
 /** @var string $role - Список новостей */
 
 use app\lib\UserOperations;
+
 ?>
 <div class="page">
     <div class="container">
@@ -33,10 +35,11 @@ use app\lib\UserOperations;
                                     <div class="news-item">
                                         <h3>
                                             Название: <?= $item['title'] ?>
-
-                                            <?php if ($role === UserOperations::RoleAdmin) : ?>
-                                                (<a href="/product/edit?product_id=<?= $item['id'] ?>">редактировать</a>
-                                                <a href="/product/delete?product_id=<?= $item['id'] ?>">Удалить</a>)
+                                            <img src="/product/img?product_id=<?=$item['id']?> ">
+                                                <?php if ($role === UserOperations::RoleAdmin) : ?>
+                                                    (<a
+                                                    href="/product/edit?product_id=<?= $item['id'] ?>">редактировать</a>
+                                            <a href="/product/delete?product_id=<?= $item['id'] ?>">Удалить</a>)
                                             <?php endif ?>
                                             <a href="/product/addcard?product_id=<?= $item['id'] ?>">добавить
                                                 корзину</a>

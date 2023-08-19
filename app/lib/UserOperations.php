@@ -41,12 +41,19 @@ class UserOperations
             'title' => 'Корзина',
             'link' => '/product/card'
         ];
+        $list[]= [
+            'title' => 'История',
+            'link' => '/product/history'
+        ];
         if ($role === self::RoleAdmin){
+            $list[]= [
+                'title' => 'Глобальная история',
+                'link' => '/product/global'
+            ];
             $list[]= [
                 'title' => 'Пользователи',
                 'link' => '/user/users'
             ];
-
         }
         $list[]= [
             'title' => 'Выход',

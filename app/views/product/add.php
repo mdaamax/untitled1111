@@ -20,7 +20,8 @@
             <div class="cabinet_content">
                 <dib class="page-content-inner">
                     <h2>Добавление товара</h2>
-                    <form method="post" name="news_add_form">
+                    <form method="post" name="news_add_form"
+                    enctype="multipart/form-data">
                         <div class="news_add_form">
                             <div class="alert alert-danger <?= !empty($error_message) ? null : 'hidden' ?>">
                                 <?= !empty($error_message) ? $error_message : null ?>
@@ -79,6 +80,16 @@
                                         ? $_POST['product']['description']
                                         : ''
                                     ?></textarea>
+                            </div>
+                            <div class="input_box">
+                                <label for="field_short_description">колво</label>
+                                <input type="file"
+                                       name="file"
+                                       id="field_short_description"
+                                       class="form-control"
+                                       maxlength="120"
+
+                                >
                             </div>
 
                             <div class="button_box">

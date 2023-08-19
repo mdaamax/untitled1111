@@ -3,7 +3,7 @@
 use app\lib\UserOperations;
 
 /** @var $content - списко каталога */
-
+/** @var $product - списко каталога */
 ?>
 
 
@@ -207,22 +207,22 @@ use app\lib\UserOperations;
 <section class="back">
     <div class="container text-center">
         <div class="row align-items-start">
-
+<?php foreach ($product as $item) : ?>
             <div class="col gy-5">
                 <div class="card" style="width: 20rem;">
                     <!--                        <img src="https://images.squarespace-cdn.com/content/v1/5287bee0e4b0fd595cc2a60f/1496155488416-4GXO8IFEZSKI8O4N3ZSB/ke17ZwdGBToddI8pDm48kMidd_fVERlblIIVuIb_11BZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpx10iUG6tfMgCBB2It1X-YJ7A5R-MhySWbfhJf8kid0Axv9bsT1zvOjTQZv2qL2czQ/Bottle-of-beer-mock-up-TOONILLA+WEB.png"-->
-                    <img src=""
+                    <img src="/product/img?product_id=<?=$item['id']?>"
                          class="card-img-top" style="width: 8rem;margin: auto" height="370px" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-price"> ₽</p>
+                        <h5 class="card-title"><?= $item['title'] ?></h5>
+                        <p class="card-price"><?= $item['price'] ?> ₽</p>
                         <hr>
 <!--                        изменил href="product.php?product_id="-->
-                        <a class="btn btn-primary" href="product" role="button">Открыть</a>
+                        <a class="btn btn-primary" href="/product/addcard?product_id=<?= $item['id'] ?>" role="button">Открыть</a>
                     </div>
                 </div>
             </div>
-
+<?php endforeach;?>
 
             <div class="more">
                 <a href="#" class="link-dark"><strong>more</strong></a>
