@@ -16,6 +16,9 @@ class ProductModel extends BaseModel
         if (empty($product_data['price'])) {
             $error_message .= "Введите цену!<br>";
         }
+        if (empty($product_data['count'])) {
+            $error_message .= "Введите количество!<br>";
+        }
         if (empty($product_data['description'])) {
             $error_message .= "Введите описание<br>";
         }
@@ -27,11 +30,12 @@ class ProductModel extends BaseModel
         }
         if (empty($error_message)) {
             $result = $this->insert(
-                'INSERT INTO product(title,price, description, file_path)
-                        values (:title,:price, :description, :file_path)',
+                'INSERT INTO product(title,price, description,count, file_path)
+                        values (:title,:price, :description,:count, :file_path)',
                 [
                     'title' => $product_data['title'],
                     'price' => $product_data['price'],
+                    'count' => $product_data['count'],
                     'description' => $product_data['description'],
                     'file_path' => $product_data['file_path']
                 ]
@@ -102,7 +106,7 @@ class ProductModel extends BaseModel
             $error_message .= "Введите описание<br>";
         }
         if (empty($product_data['count'])) {
-            $error_message .= "kolvo<br>";
+            $error_message .= "Введите количество<br>";
         }
         if (empty($error_message)) {
             $result = $this->update(

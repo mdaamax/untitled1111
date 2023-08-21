@@ -213,7 +213,7 @@ class ProductController extends initController
         $this->view->title = 'Глобальная История';
         $product_model = new ProductModel();
         $product = $product_model->getHistory();
-        $this->render('history', [
+        $this->render('globalHistory', [
             'sidebar' => UserOperations::getMenuLinks(),
             'product' => $product,
             'role' => UserOperations::getRoleUser(),

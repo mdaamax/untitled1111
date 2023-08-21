@@ -82,7 +82,7 @@
                                     ?></textarea>
                             </div>
                             <div class="input_box">
-                                <label for="field_short_description">колво</label>
+                                <label for="field_short_description">Изображение</label>
                                 <input type="file"
                                        name="file"
                                        id="field_short_description"

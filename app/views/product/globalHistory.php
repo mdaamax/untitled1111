@@ -22,18 +22,18 @@ use app\lib\UserOperations;
             </div>
             <div class="cabinet_content">
                 <div class="page-content-inner">
-                    <h2>История</h2>
+                    <h2>Глобальная История</h2>
                     <div class="news-block">
                         <?php if (!empty($product)) : ?>
                             <div class="news-list">
                                 <?php foreach ($product as $item) : ?>
                                     <div class="news-item">
                                         <h3>
-                                           <span> Дата Покупки <?= date('d.m.Y H:i:s',strtotime($item['date_create']))?></span>
+                                            <span> Дата Покупки <?= date('d.m.Y H:i:s',strtotime($item['date_create']))?></span>
 
                                         </h3>
                                         <div class="news-description">Цена: <?= $item['price'] ?> ₽</div>
-                                        <div class="news-description">количество <?= $item['count'] ?> шт</div>
+                                        <div class="news-description">колво <?= $item['count'] ?> шт</div>
                                         <div class="news-description">покупатель <?= $item['login'] ?> </div>
                                     </div>
                                 <?php endforeach; ?>

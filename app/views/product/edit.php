@@ -53,7 +53,7 @@
                                 >
                             </div>
                             <div class="input_box">
-                                <label for="field_short_description">колво</label>
+                                <label for="field_short_description">количество</label>
                                 <input type="text"
                                        name="product[count]"
                                        id="field_short_description"

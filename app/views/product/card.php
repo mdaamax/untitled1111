@@ -27,9 +27,6 @@ use app\lib\UserOperations;
                 <dib class="page-content-inner">
                     <h2>Корзина</h2>
                     <div class="news-block">
-                        <div class="links_box text-end">
-                            <a href="/news/add">Добавить</a>
-                        </div>
                         <?php if (!empty($card)) : ?>
                             <div class="news-list">
                                 <?php foreach ($card as $item) : ?>
@@ -37,17 +34,27 @@ use app\lib\UserOperations;
                                         <h3>
                                             Название: <?= $item['title'] ?>
                                         </h3>
-                                        <div class="news-short_description">Цена: <?= $item['price'] ?> ₽</div>
-                                        <div class="news-description">Описание: <?= $item['description'] ?></div>
-                                        <div class="news-description">Товаров в корзине: <?= $item['in_card'] ?></div>
+                                        <img src="/product/img?product_id=<?= $item['id'] ?> "
+                                             style="width: 4rem;margin: auto" height="170px" alt="...">
+                                        <h3>
+                                            <div class="news-description">Цена: <?= $item['price'] ?> ₽</div>
+                                        </h3>
+                                        <h3>
+                                            <div class="news-description">Описание: <?= $item['description'] ?></div>
+                                        </h3>
+                                        <h3>
+                                            <div class="news-description">Товаров в
+                                                корзине: <?= $item['in_card'] ?>
+                                            </div>
+                                        </h3>
                                     </div>
                                 <?php endforeach; ?>
 
                             </div>
                             <div class="button_box">
                                 <a href="/product/buy"
-                                        id="btnNewsAddForm"
-                                        class="btn btn-primary"
+                                   id="btnNewsAddForm"
+                                   class="btn btn-primary"
                                 >оплатить
                                 </a>
                             </div>

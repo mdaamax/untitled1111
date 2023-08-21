@@ -35,17 +35,21 @@ use app\lib\UserOperations;
                                     <div class="news-item">
                                         <h3>
                                             Название: <?= $item['title'] ?>
-                                            <img src="/product/img?product_id=<?=$item['id']?> ">
-                                                <?php if ($role === UserOperations::RoleAdmin) : ?>
-                                                    (<a
-                                                    href="/product/edit?product_id=<?= $item['id'] ?>">редактировать</a>
-                                            <a href="/product/delete?product_id=<?= $item['id'] ?>">Удалить</a>)
+                                            <?php if ($role === UserOperations::RoleAdmin) : ?>
+                                                (<a
+                                                        href="/product/edit?product_id=<?= $item['id'] ?>">редактировать</a>
+                                                <a href="/product/delete?product_id=<?= $item['id'] ?>">Удалить</a>)
                                             <?php endif ?>
                                             <a href="/product/addcard?product_id=<?= $item['id'] ?>">добавить
                                                 корзину</a>
                                         </h3>
-                                        <div class="news-description">Описание: <?= $item['description'] ?></div>
-                                        <div class="news-description">Цена: <?= $item['price'] ?> ₽</div>
+                                        <img src="/product/img?product_id=<?= $item['id'] ?> "style="width: 4rem;margin: auto" height="170px" alt="...">
+                                        <h3>
+                                            <div class="news-description">Описание: <?= $item['description'] ?></div>
+                                        </h3>
+                                        <h3>
+                                            <div class="news-description">Цена: <?= $item['price'] ?> ₽</div>
+                                        </h3>
                                     </div>
                                 <?php endforeach; ?>
                             </div>

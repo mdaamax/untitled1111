@@ -70,7 +70,7 @@
 
                                 <div class="button_box">
                                     <button type="submit"
-                                            name="btn_user_edit_form"
+                                            name="btn_news_edit_form"
                                             id="btnNewsEditForm"
                                             class="btn btn-primary"
                                             value="1"
